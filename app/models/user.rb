@@ -32,5 +32,8 @@ class User < ActiveRecord::Base
   def forget
     update_attribute(:remember_digest, nil)
   end
-
+  has_many :questions
+  has_many :tutorials
+  has_many :ratings
+  has_many :comments
 end
