@@ -55,7 +55,7 @@
                   <div class="all-100 push-center half-top-space">
 
 
-                    <div class="control-group column-group gutters">
+                    <div class="control-group all-90 column-group gutters">
                       <%= f.label( :text, "Answer Question", :class => "all-20 align-right") %>
                       <div class="control all-80">
                         <%= f.text_area( :text, :placeholder => "Ask the Question", :class => 'form-control') %>
@@ -64,7 +64,7 @@
 
                     <%= hidden_field_tag :q_id, @question.id %>
                   </div>
-                  <div class="all-90 push-center half-bottom-padding">
+                  <div class="all-80 push-center half-bottom-padding">
                     <%= submit_tag( "Submit Answer", class: "ink-button all-100 blue")%>
                   </div>
 
