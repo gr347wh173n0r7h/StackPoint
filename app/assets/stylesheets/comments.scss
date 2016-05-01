@@ -1,0 +1,13 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.NewComment{
+  display: none;
+}
+.Comment {
+  border-bottom: 1px solid rgba(100,100,100,.2);
+  h4 {font-size: 1.5em;}
+  .Icon{
+    max-height: 1.3em;
+  }
+}

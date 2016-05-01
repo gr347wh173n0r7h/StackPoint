@@ -5,6 +5,7 @@
 
 
         <div class="Show column-group all-100 left-padding right-padding half-bottom-padding bottom-space push-center">
+
           <div class="Title column-group all-100 half-bottom-space" >
 
             <div class="column-group all-70">
@@ -29,7 +30,7 @@
                     </div>
                 <%else%>
                     <div class="column all-50 align-right half-left-padding push-middle">
-                      <%= link_to 'Answer Question', questions_path, class: "ink-button all-100 blue" %>
+                      <button id="AQ" class="ink-button all-100 blue" onclick="$('.NewComment').slideToggle('fast');">Answer Question</button>
                     </div>
                 <%end%>
             </div>
@@ -39,10 +40,64 @@
             <div class="all-100 half-top-padding half-left-padding half-right-padding"><p><%=@question.text%></p></div>
           </div>
 
+
+
+          <div class="NewComment column-group all-100 half-top-padding half-bottom-space" >
+            <div class="column-group all-100">
+
+              <div class="Title column-group all-100 half-top-padding half-bottom-space" >
+                <div class="column-group all-100">
+                  <div class="all-50"><h3>Answer Question</h3></div>
+                </div>
+              </div>
+
+              <%= form_for(:comment, url: comments_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
+                  <div class="all-100 push-center half-top-space">
+
+
+                    <div class="control-group column-group gutters">
+                      <%= f.label( :text, "Answer Question", :class => "all-20 align-right") %>
+                      <div class="control all-80">
+                        <%= f.text_area( :text, :placeholder => "Ask the Question", :class => 'form-control') %>
+                      </div>
+                    </div>
+
+                    <%= hidden_field_tag :q_id, @question.id %>
+                  </div>
+                  <div class="all-90 push-center half-bottom-padding">
+                    <%= submit_tag( "Submit Answer", class: "ink-button all-100 blue")%>
+                  </div>
+
+              <% end %>
+
+            </div>
+          </div>
+
           <div class="Title column-group all-100 half-top-padding half-bottom-space" >
             <div class="column-group all-100">
               <div class="all-50"><h3>Answers</h3></div>
             </div>
+          </div>
+
+          <div class="Desc all-90 push-center align-left half-top-padding bottom-padding" >
+            <div class="all-100 half-top-padding half-left-padding half-right-padding"></div>
+                <% @comments.each do |c|%>
+                <% @user = User.find(c.user_id)%>
+                <div class="Comment column-group all-100 half-top-padding ">
+                  <div class="all-30 push-middle">
+                    <h4><%=@user.name %></h4>
+                  </div>
+                  <div class="all-80 push-middle">
+                    <p><%=c.text%></p>
+                  </div>
+                  <dic class="all-10 align-right">
+                    <% if @user == current_user %>
+                        <%=link_to image_tag("ex.png", class: "Icon"), comment_path(c.id), method: :delete%>
+                    <%end%>
+                  </dic>
+                </div>
+
+                <%end%>
           </div>
 
         </div>
@@ -51,3 +106,24 @@
     </div>
   </div>
 </div>
+
+
+<script type="text/javascript">
+//    Ink.requireModules(['Ink.Dom.Event_1'], function (InkEvent) {
+//
+//        function addEvents() {
+//            InkEvent.on(Ink.s('#AQ') ,'click',ShowComment);
+//        }
+//        function initProject(){
+//            addEvents();
+//        }
+//        Loaded.run(function() {
+//            initProject();
+//        });
+//
+//    });
+//    function ShowComment(){
+//
+//    }
+
+</script>

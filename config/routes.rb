@@ -16,8 +16,12 @@ Rails.application.routes.draw do
   # get 'projects/update' => 'projects#update'
   delete 'questions/id' => 'questions#destroy'
 
+  post 'comments/create'
+  delete 'comments/id' => 'comments#destroy'
+
   resources :users
   resources :questions
+  resources :comments
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
