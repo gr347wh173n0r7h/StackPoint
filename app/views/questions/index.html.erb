@@ -1,0 +1,30 @@
+<div class="ink-grid">
+  <div class="QuestionIndex all-100 half-top-padding">
+    <div class="Title column-group all-100 push-left">
+      <div class="all-50"><h1>Questions</h1></div>
+      <div class="all-50 align-right push-middle">
+        <%= button_to "Ask a Question", new_question_path, :method => :get, class: "ink-button blue all-30" %>
+      </div>
+    </div>
+    <div class="column-group all-100 horizontal-gutters push-center">
+      <% @questions.each do |a| %>
+          <div class="QuestionCardHolder all-25 medium-30 small-50 tiny-100 half-bottom-space half-top-padding">
+            <div class="QuestionCard padding half-bottom-space">
+
+              <div class="all-100">
+                <div class="all-100 left-padding right-padding ">
+                  <div class="Title all-100 align-center top-padding push-top">
+                    <a href="<%= question_path(a) %>"><h3><%= a.title %></h3></a>
+                  </div>
+                  <div class="all-100 align-center top-padding push-bottom">
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

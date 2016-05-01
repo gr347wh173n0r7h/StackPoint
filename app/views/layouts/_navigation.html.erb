@@ -12,6 +12,7 @@
         <ul class="menu horizontal push-right hide-small hide-tiny hide-medium">
           <li><%= link_to("Home", root_path) %></li>
           <% if logged_in? %>
+              <li class="heading"><%= link_to("Questions", questions_path) %></li>
               <li class="heading"><%= link_to("Account", current_user) %></li>
               <li class="heading"><%= link_to("Logout", logout_path, method: "delete") %></li>
           <% else %>
@@ -26,6 +27,7 @@
 <div class="left-drawer">
   <li><%= link_to("Home", root_path) %></li>
   <% if logged_in? %>
+      <li class="heading"><%= link_to("Questions", questions_path) %></li>
       <li class="heading"><%= link_to("Account", current_user) %></li>
       <li class="heading"><%= link_to("Logout", logout_path, method: "delete") %></li>
   <% else %>

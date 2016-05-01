@@ -1,0 +1,37 @@
+<div class="QuestionShow all-100">
+  <div class="ink-grid">
+    <div class="push-center">
+      <div class="column-group all-100 push-center padding">
+
+
+        <div class="Show column-group all-100 left-padding right-padding half-top-padding half-bottom-padding bottom-space push-center">
+          <div class="Title column-group all-100 half-top-padding half-bottom-space" >
+            <div class="all-50"><h3><%=@question.title%></h3></div>
+            <% if current_user.id == @question.user_id%>
+                <div class="all-25 align-center half-top-padding half-right-padding">
+                  <%= link_to 'Edit Question', edit_question_path(@question), class: "ink-button all-100 blue" %>
+                </div>
+                <div class="all-25 align-center half-top-padding half-left-padding">
+                  <%= link_to 'Delete Question',
+                              question_path(@question),
+                              method: :delete,
+                              class: "ink-button all-100 blue",
+                              data: {confirm: 'Are you sure'} %>
+                </div>
+            <%else%>
+                <div class="column all-50 align-center top-padding half-left-padding">
+                  <%= link_to 'Answer Question', questions_path, class: "ink-button all-100 blue" %>
+                </div>
+            <%end%>
+          </div>
+
+          <div class="Desc all-100 align-left half-top-padding half-bottom-space" >
+            <div class="all-100 half-top-padding half-left-padding half-right-padding"><p><%=@question.text%></p></div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
