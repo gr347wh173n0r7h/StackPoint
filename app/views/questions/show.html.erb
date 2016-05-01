@@ -4,11 +4,11 @@
       <div class="column-group all-100 push-center padding">
 
 
-        <div class="Show column-group all-100 left-padding right-padding half-top-padding half-bottom-padding bottom-space push-center">
-          <div class="Title column-group all-100 half-top-padding half-bottom-space" >
+        <div class="Show column-group all-100 left-padding right-padding half-bottom-padding bottom-space push-center">
+          <div class="Title column-group all-100 half-bottom-space" >
 
             <div class="column-group all-70">
-              <div class="all-40 push-middle"><h3><%=@question.title%></h3></div>
+              <div class="all-40 push-middle half-top-padding"><h3><%=@question.title%></h3></div>
               <div class="column-group all-60 half-top-padding push-middle">
                   <div class="all-40 "><p><%= @question.user.name%></p></div>
                   <div class="all-60 align-right half-right-padding"><p><%=@question.created_at.strftime("%I:%M%p %m/%d/%Y")%></p></div>
