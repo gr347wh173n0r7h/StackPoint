@@ -1,0 +1,82 @@
+
+<div class="Home all-100">
+  <section class="module parallax parallax-1">
+    <div class="container">
+      <h1>StackPoint</h1>
+    </div>
+  </section>
+
+  <!--<section class="module content">-->
+  <!--<div class="container">-->
+  <div class="ink-grid">
+    <div class="push-center">
+      <div class="column-group all-100 push-center padding bottom-space">
+
+        <!--<div class="column-group all-100 left-padding right-padding half-top-padding half-bottom-padding bottom-space push-middle">-->
+          <!--<div class="all-100 align-center" >-->
+            <!--<h1>2. Create your Project Abstract.</h1>-->
+          <!--</div>-->
+        <!--</div>-->
+        <div class="Steps column-group all-100 left-padding right-padding half-top-padding half-bottom-padding bottom-space push-center">
+          <div class="Header all-95 align-center half-top-padding half-bottom-padding" >
+            <h1>Steps</h1>
+          </div>
+          <div class=" all-100 horizontal-gutters push-center align-center top-padding">
+            <div class="column-group all-100">
+                <div class="all-33 push-left">
+
+                  <div class=" padding">
+                    <h4>Create an Account</h4>
+                    <p>Simply Register with an email to begin your project search <%= link_to "Sign up now!", register_path %></p>
+                  </div>
+                </div>
+                <div class="all-33 push-center">
+
+                  <div class=" padding">
+                    <h4>Find a Project</h4>
+                    <p>Search for a project or if nothing is interesting create your own.</p>
+                  </div>
+                </div>
+                <div class="all-33 push-right">
+
+                  <div class="padding">
+                    <h4>Get an Advisor</h4>
+                    <p>Once you have your project and team search through the list of advisors.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+    (function(){
+
+        var parallax = document.querySelectorAll(".parallax"),
+                speed = .5;
+
+        window.onscroll = function(){
+            [].slice.call(parallax).forEach(function(el,i){
+                if(i == 0) {
+                    var windowYOffset = window.pageYOffset,
+                            elBackgrounPos = "50%" + (windowYOffset * speed -50) + "px";
+                }
+                else{
+                    var windowYOffset = window.pageYOffset,
+                            elBackgrounPos = "50%" + (windowYOffset * speed + 200) + "px";
+                }
+
+                el.style.backgroundPosition = elBackgrounPos;
+
+            });
+        };
+
+    })();
+</script>

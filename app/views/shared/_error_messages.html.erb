@@ -1,0 +1,11 @@
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <div class="ink-alert basic error">
+        Registration contains <%= pluralize(@user.errors.count, "problems") %>.
+        <button class="ink-dismiss">&times;</button>
+        <% @user.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+        <% end %>
+      </div>
+    </div>
+<% end %>

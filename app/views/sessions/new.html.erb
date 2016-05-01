@@ -1,0 +1,47 @@
+<div class="ink-grid">
+  <div class="column-group push-center push-middle push-center top-padding">
+    <div class="Login all-50 push-center push-middle top-padding horizontal-gutters">
+      <center><h1>Login</h1></center>
+
+      <% if flash[:danger] %>
+          <div class="column-group all-100 push-center push-middle">
+            <div class="ink-alert basic error all-80">
+              <button class="ink-dismiss">&times;</button>
+              <p><%= flash[:danger] %></p>
+            </div>
+          </div>
+      <% end %>
+
+      <%= form_for(:session, url: login_path, :html => {:class => "ink-form "}) do |f| %>
+
+          <div class="control-group all-80 push-center push-middle">
+            <%= f.label :email, :class => "all-20 align-right" %>
+            <div class="control all-100">
+              <%= f.email_field :email%>
+            </div>
+            <%= f.label :password, :class => "all-20 align-right" %>
+            <div class="control all-100">
+              <%= f.password_field :password%>
+            </div>
+            <div class="column-group ">
+              <fieldset>
+                <div class="control all-100">
+                  <%= f.label :remember_me, class: "all-20" do %>
+                      <ul class="control unstyled">
+                        <li><%= f.check_box :remember_me %> &nbsp;&nbsp;Remember me on this Computer</li>
+                      </ul>
+                  <% end %>
+                </div>
+              </fieldset>
+            </div>
+            <div class="control all-100 push-center push-middle">
+              <%= f.submit "Login", class: "ink-button blue"%>
+            </div>
+            <div class="column-group push-center push-middle half-top-space">
+              <h5>New to Projects? <%= link_to "Sign up now!", register_path %></h5>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>Works
