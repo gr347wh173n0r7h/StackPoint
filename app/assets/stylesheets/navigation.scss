@@ -26,7 +26,10 @@
     font-size: 14px;
     background: none;
   }
-  .ink-navigation ul li a {
+  .ink-navigation ul li p {
+    margin-bottom: 0;
+  }
+  .ink-navigation ul li a, .ink-navigation ul li p {
     background: none;
     padding: .7em 1em;
     //color: #bbb;
