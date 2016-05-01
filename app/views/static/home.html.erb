@@ -19,29 +19,30 @@
         <!--</div>-->
         <div class="Steps column-group all-100 left-padding right-padding half-top-padding half-bottom-padding bottom-space push-center">
           <div class="Header all-95 align-center half-top-padding half-bottom-padding" >
-            <h1>Steps</h1>
+            <h1>Welcome to StackPoint</h1>
+            <p>Your one stop Question and Tutorial site</p>
           </div>
           <div class=" all-100 horizontal-gutters push-center align-center top-padding">
-            <div class="column-group all-100">
+            <div class="column-group all-100 top-padding">
                 <div class="all-33 push-left">
-
+                  <%= image_tag("create.png", class: "Icon") %>
                   <div class=" padding">
                     <h4>Create an Account</h4>
                     <p>Simply Register with an email to begin your project search <%= link_to "Sign up now!", register_path %></p>
                   </div>
                 </div>
-                <div class="all-33 push-center">
-
+                <div class="all-33 push-center top-padding">
+                  <%= image_tag("quest.png", class: "Icon") %>
                   <div class=" padding">
-                    <h4>Find a Project</h4>
-                    <p>Search for a project or if nothing is interesting create your own.</p>
+                    <h4>Ask A Question</h4>
+                    <p>Or better yet read a Tutorial</p>
                   </div>
                 </div>
-                <div class="all-33 push-right">
-
+                <div class="all-33 push-right top-padding">
+                  <%= image_tag("ansr.png", class: "Icon") %>
                   <div class="padding">
-                    <h4>Get an Advisor</h4>
-                    <p>Once you have your project and team search through the list of advisors.</p>
+                    <h4>Answer Questions</h4>
+                    <p>Once you have become a master solve other peoples problems or write a tutorial for your self.</p>
                   </div>
                 </div>
             </div>
