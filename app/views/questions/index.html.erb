@@ -17,7 +17,8 @@
                     <a href="<%= question_path(a) %>"><h3><%= a.title %></h3></a>
                   </div>
                   <div class="all-100 align-center top-padding push-bottom">
-
+                    <p><%= a.user.name%></p>
+                    <p><%=a.created_at.strftime("%I:%M%p %m/%d/%Y")%></p>
                   </div>
                 </div>
               </div>

@@ -6,12 +6,15 @@
 
         <div class="Show column-group all-100 left-padding right-padding half-top-padding half-bottom-padding bottom-space push-center">
           <div class="Title column-group all-100 half-top-padding half-bottom-space" >
-            <div class="all-50"><h3><%=@question.title%></h3></div>
+            <div class="column-group all-50">
+              <div class="all-50"><h3><%=@question.title%></h3></div>
+              <div class="all-50 push-middle"><p><%=@question.created_at.strftime("%I:%M%p %m/%d/%Y")%></p></div>
+            </div>
             <% if current_user.id == @question.user_id%>
-                <div class="all-25 align-center half-top-padding half-right-padding">
+                <div class="all-25 align-center half-right-padding">
                   <%= link_to 'Edit Question', edit_question_path(@question), class: "ink-button all-100 blue" %>
                 </div>
-                <div class="all-25 align-center half-top-padding half-left-padding">
+                <div class="all-25 align-center half-left-padding">
                   <%= link_to 'Delete Question',
                               question_path(@question),
                               method: :delete,
@@ -25,8 +28,14 @@
             <%end%>
           </div>
 
-          <div class="Desc all-100 align-left half-top-padding half-bottom-space" >
+          <div class="Desc all-90 push-center align-left half-top-padding bottom-padding" >
             <div class="all-100 half-top-padding half-left-padding half-right-padding"><p><%=@question.text%></p></div>
+          </div>
+
+          <div class="Title column-group all-100 half-top-padding half-bottom-space" >
+            <div class="column-group all-100">
+              <div class="all-50"><h3>Answers</h3></div>
+            </div>
           </div>
 
         </div>
