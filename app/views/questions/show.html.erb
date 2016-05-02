@@ -9,11 +9,30 @@
           <div class="Title column-group all-100 half-bottom-space" >
 
             <div class="column-group all-70">
-              <div class="all-40 push-middle half-top-padding"><h3><%=@question.title%></h3></div>
-              <div class="column-group all-60 half-top-padding push-middle">
+
+              <div class="Title column-group all-100 push-middle half-top-padding">
+                <div class="all-50"><h3><%=@question.title%></h3></div>
+                <div class="all-30 align-right"><p><b>Rating: </b> <%=@question.ratings.average(:rate).round(2)%></p></div>
+                <div class="all-20 half-right-padding">
+
+                  <%= form_for(:rating, url: ratings_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
+                      <%= hidden_field_tag :q_id, @question.id %>
+                      <ul class="rating">
+                        <li><%= f.radio_button(:rate, 5, :onclick => "this.form.submit();") %></li>
+                        <li><%= f.radio_button(:rate, 4, :onclick => "this.form.submit();") %></li>
+                        <li><%= f.radio_button(:rate, 3, :onclick => "this.form.submit();") %></li>
+                        <li><%= f.radio_button(:rate, 2, :onclick => "this.form.submit();") %></li>
+                        <li><%= f.radio_button(:rate, 1, :onclick => "this.form.submit();") %></li>
+                      </ul>
+                  <% end %>
+
+                </div>
+              </div>
+              <div class="column-group all-100 push-middle half-top-padding">
                   <div class="all-40 "><p><%= @question.user.name%></p></div>
                   <div class="all-60 align-right half-right-padding"><p><%=@question.created_at.strftime("%I:%M%p %m/%d/%Y")%></p></div>
               </div>
+
             </div>
 
             <div class="column-group all-30 push-right">
@@ -83,18 +102,20 @@
             <div class="all-100 half-top-padding half-left-padding half-right-padding"></div>
                 <% @comments.each do |c|%>
                 <% @user = User.find(c.user_id)%>
-                <div class="Comment column-group all-100 half-top-padding ">
-                  <div class="all-30 push-middle">
-                    <h4><%=@user.name %></h4>
+                <div class="Comment all-100 half-top-padding ">
+                  <div class="column-group all-100">
+                        <div class="all-90 push-middle">
+                          <h4><%=@user.name %></h4>
+                        </div>
+                        <dic class="all-10 align-right half-top-padding">
+                            <% if @user == current_user %>
+                                <%=link_to image_tag("ex.png", class: "Icon"), comment_path(c.id), method: :delete%>
+                            <%end%>
+                        </dic>
                   </div>
-                  <div class="all-60 push-middle">
+                  <div class="column all-100">
                     <p><%=c.text%></p>
                   </div>
-                  <dic class="all-10 align-right">
-                    <% if @user == current_user %>
-                        <%=link_to image_tag("ex.png", class: "Icon"), comment_path(c.id), method: :delete%>
-                    <%end%>
-                  </dic>
                 </div>
 
                 <%end%>

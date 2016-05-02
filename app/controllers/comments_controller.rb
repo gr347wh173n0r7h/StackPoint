@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @question.comments.build(comment_params)
     @comment[:user_id] = current_user.id
     if @comment.save
-      flash[:success] = "Comment Added"
+      flash[:danger] = "Comment Added"
       redirect_to question_path(@question)
     else
       flash[:failure] = "Error Occured"

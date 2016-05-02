@@ -13,11 +13,12 @@
 
               <div class="all-100">
                 <div class="all-100 left-padding right-padding ">
-                  <div class="Title all-100 align-center top-padding push-top">
+                  <div class="Title all-100 align-center top-padding push-top" style="min-height: 10em">
                     <a href="<%= question_path(a) %>"><h3><%= a.title %></h3></a>
                   </div>
                   <div class="all-100 align-center top-padding push-bottom">
                     <p><%= a.user.name%></p>
+                    <p><%=a.ratings.average(:rate).round(2)%></p>
                     <p><%=a.created_at.strftime("%I:%M%p %m/%d/%Y")%></p>
                   </div>
                 </div>

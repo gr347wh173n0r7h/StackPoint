@@ -19,9 +19,12 @@ Rails.application.routes.draw do
   post 'comments/create'
   delete 'comments/id' => 'comments#destroy'
 
+  post 'ratings/create'
+
   resources :users
   resources :questions
   resources :comments
+  resources :ratings
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
