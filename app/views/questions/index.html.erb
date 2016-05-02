@@ -20,7 +20,7 @@
                     <p><%= a.user.name%></p>
                     <% if a.ratings.size != 0 %>
                         <%j = a.ratings.average(:rate).round()%>
-                        <div class="Stars <%if j == 5%> all-90 <%elsif j == 4 %>  all-80 <%elsif j == 3 %> all-75 <%elsif j == 2 %> all-65 <%else%> all-60 <%end%> align-center">
+                        <div class="Stars <%if j == 5%> all-85 <%elsif j == 4 %>  all-75 <%elsif j == 3 %> all-70 <%elsif j == 2 %> all-65 <%else%> all-60 <%end%> align-center">
                             <ul class="rating ">
                               <% for i in 0..(j-1) do %>
                                 <li><%= image_tag("star2.png", class: "SIcon") %></li>
@@ -30,6 +30,8 @@
                     <% else %>
                         <p>0</p>
                     <% end %>
+                    <br>
+                    <p>Comments: <%= a.comments.size%></p>
                     <p><%=a.created_at.strftime("%I:%M%p %m/%d/%Y")%></p>
                   </div>
                 </div>

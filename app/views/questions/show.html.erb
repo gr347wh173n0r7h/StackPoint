@@ -12,17 +12,23 @@
 
               <div class="Title column-group all-100 push-middle half-top-padding">
                 <div class="all-50 push-middle half-top-padding"><h3><%=@question.title%></h3></div>
-                <div class="all-30 align-right push-middle half-top-padding">
-                  <p>
-                    <b>Rating: </b>
+                <div class="column-group all-30 align-left push-middle half-top-padding">
+                  <div class="all-40 half-top-padding"><p><b>Rating: </b></p></div>
+                  <div class="all-60">
                     <% if @question.ratings.size != 0 %>
-                        <%=@question.ratings.average(:rate).round(2)%>
-                    <% else %>
-                        0
+                        <%@question.ratings.average(:rate).round(2)%>
+                        <%j = @question.ratings.average(:rate).round()%>
+                      <div class="Stars">
+                        <ul class="rating" style="float: left">
+                          <% for i in 0..(j-1) do %>
+                              <li><%= image_tag("star2.png", class: "SIcon") %></li>
+                          <% end %>
+                        </ul>
+                      </div>
                     <% end %>
-                  </p>
+                  </div>
                 </div>
-                <div class="Stars all-20 half-right-padding">
+                <div class="Stars all-20 half-top-padding half-right-padding">
 
                   <%= form_for(:rating, url: ratings_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
                       <%= hidden_field_tag :q_id, @question.id %>
