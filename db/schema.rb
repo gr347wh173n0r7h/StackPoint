@@ -41,10 +41,12 @@ ActiveRecord::Schema.define(version: 20160501020519) do
     t.integer  "user_id"
     t.integer  "tutorial_id"
     t.integer  "question_id"
+    t.integer  "comment_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
+  add_index "ratings", ["comment_id"], name: "index_ratings_on_comment_id"
   add_index "ratings", ["question_id"], name: "index_ratings_on_question_id"
   add_index "ratings", ["tutorial_id"], name: "index_ratings_on_tutorial_id"
   add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
