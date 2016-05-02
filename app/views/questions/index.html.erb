@@ -18,7 +18,11 @@
                   </div>
                   <div class="all-100 align-center top-padding push-bottom">
                     <p><%= a.user.name%></p>
-                    <p><%=a.ratings.average(:rate).round(2)%></p>
+                    <% if a.ratings.size != 0 %>
+                        <p><%=a.ratings.average(:rate).round(2)%></p>
+                    <% else %>
+                        <p>0</p>
+                    <% end %>
                     <p><%=a.created_at.strftime("%I:%M%p %m/%d/%Y")%></p>
                   </div>
                 </div>

@@ -9,6 +9,66 @@
             <div class="all-40 align-right"><p><%=@user.email%></p></div>
             <div class="all-20 align-right"><%=link_to image_tag("set.png", class: "Icon"), edit_user_path(current_user)%></div>
           </div>
+
+          <div class="Title column-group all-100 half-top-padding half-bottom-space push-middle" >
+            <h4>Questions Asked</h4>
+          </div>
+          <div class="ContentBox all-100 padding">
+            <% @user.questions.each do |c| %>
+                <div class="ContentEntry column-group all-100 push-middle">
+                    <div class="all-30 half-top-padding"><h5><%=c.title%></h5></div>
+                    <div class="all-40 align-center half-top-padding"><p><%=c.text.first(30)%>...</p></div>
+                    <div class="all-10 align-center half-top-padding"><p>Comments: <%=c.comments.size%></p></div>
+                  <div class="all-10 align-center half-top-padding">
+                    <% if c.ratings.size != 0 %>
+                        <p>Rating: <%=c.ratings.average(:rate).round(2)%></p>
+                    <% else %>
+                        <p>Rating: None</p>
+                    <% end %>
+                  </div>
+                  <div class="all-10 align-right ">
+                      <%= link_to image_tag("ex.png", class: "Icon"),
+                                  question_path(c),
+                                  method: :delete,
+                                  data: {confirm: 'Are you sure'} %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+
+          <div class="Title column-group all-100 top-padding half-bottom-space push-middle" >
+            <h4>Comments Made</h4>
+          </div>
+          <div class="ContentBox all-100 padding">
+            <% @user.comments.each do |c| %>
+                <div class="ContentEntry column-group all-100 push-middle">
+                  <div class="all-30 half-top-padding"><h5><%=c.question.title%></h5></div>
+                  <div class="all-40 align-center half-top-padding"><p><%=c.text.first(30)%>...</p></div>
+                  <div class="all-10 align-center half-top-padding"><p>Comments: <%=c.question.comments.size%></p></div>
+                  <div class="all-10 align-center half-top-padding">
+                    <% if c.question.ratings.size != 0 %>
+                        <p>Rating: <%=c.question.ratings.average(:rate).round(2)%></p>
+                    <% else %>
+                        <p>Rating: None</p>
+                    <% end %>
+                  </div>
+                  <div class="all-10 align-right ">
+                    <%= link_to image_tag("ex.png", class: "Icon"),
+                                comment_path(c),
+                                method: :delete,
+                                data: {confirm: 'Are you sure'} %>
+                  </div>
+                </div>
+            <% end %>
+          </div>
+
+          <div class="Title column-group all-100 top-padding half-bottom-space push-middle" >
+            <h4>Tutorials Posted</h4>
+          </div>
+          <div class="ContentBox all-100">
+
+          </div>
+
         </div>
 
       </div>
