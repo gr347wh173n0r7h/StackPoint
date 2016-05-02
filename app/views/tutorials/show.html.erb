@@ -1,0 +1,179 @@
+<div class="QuestionShow all-100">
+  <div class="ink-grid">
+    <div class="push-center">
+      <div class="column-group all-100 push-center padding">
+
+
+        <div class="Show column-group all-100 left-padding right-padding half-bottom-padding bottom-space push-center">
+
+          <div class="Title column-group all-100 half-bottom-space" >
+
+            <div class="column-group all-70">
+
+              <div class="Title column-group all-100 push-middle half-top-padding">
+                <div class="all-50 push-middle half-top-padding"><h3><%=@tutorial.title%></h3></div>
+                <div class="column-group all-30 align-left push-middle half-top-padding">
+                  <div class="all-40 half-top-padding"><p><b>Rating: </b></p></div>
+                  <div class="all-60">
+                    <% if @tutorial.ratings.size != 0 %>
+                        <%@tutorial.ratings.average(:rate).round(2)%>
+                        <%j = @tutorial.ratings.average(:rate).round()%>
+                        <div class="Stars">
+                          <ul class="rating" style="float: left">
+                            <% for i in 0..(j-1) do %>
+                                <li><%= image_tag("star2.png", class: "SIcon") %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="Stars all-20 half-top-padding half-right-padding">
+
+                  <%= form_for(:rating, url: ratings_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
+                      <%= hidden_field_tag :t_id, @tutorial.id %>
+                      <ul class="rating">
+                        <li><label><%= f.radio_button(:rate, 5, :onclick => "this.form.submit();") %> <%= image_tag("star.png", class: "SIcon") %></label></li>
+                        <li><label><%= f.radio_button(:rate, 4, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                        <li><label><%= f.radio_button(:rate, 3, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                        <li><label><%= f.radio_button(:rate, 2, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                        <li><label><%= f.radio_button(:rate, 1, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                      </ul>
+                  <% end %>
+
+                </div>
+              </div>
+              <div class="column-group all-100 push-middle half-top-padding">
+                <div class="all-40 "><p><%= @tutorial.user.name%></p></div>
+                <div class="all-60 align-right half-right-padding"><p><%=@tutorial.created_at.strftime("%I:%M%p %m/%d/%Y")%></p></div>
+              </div>
+
+            </div>
+
+            <div class="column-group all-30 push-right">
+              <% if current_user.id == @tutorial.user_id%>
+                  <div class="all-15 align-center half-left-padding half-right-padding push-middle">
+                    <%= link_to 'Edit Tutorial', edit_tutorial_path(@tutorial), class: "ink-button all-100 blue" %>
+                  </div>
+                  <div class="all-15 align-center push-middle">
+                    <%= link_to 'Delete Tutorial',
+                                tutorial_path(@tutorial),
+                                method: :delete,
+                                class: "ink-button all-100 blue",
+                                data: {confirm: 'Are you sure'} %>
+                  </div>
+              <%else%>
+                  <div class="column all-50 align-right half-left-padding push-middle">
+                    <button id="AQ" class="ink-button all-100 blue" onclick="$('.NewComment').slideToggle('fast');">Comment on Tutorial</button>
+                  </div>
+              <%end%>
+            </div>
+          </div>
+
+          <div class="Desc all-90 push-center align-left half-top-padding bottom-padding" >
+            <div class="all-100 half-top-padding half-left-padding half-right-padding"><p><%=@tutorial.text%></p></div>
+          </div>
+
+
+
+          <div class="NewComment column-group all-100 half-top-padding half-bottom-space" >
+            <div class="column-group all-100">
+
+              <div class="Title column-group all-100 half-top-padding half-bottom-space" >
+                <div class="column-group all-100">
+                  <div class="all-50"><h3>Post Comments</h3></div>
+                </div>
+              </div>
+
+              <%= form_for(:comment, url: comments_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
+                  <div class="all-100 push-center half-top-space">
+
+
+                    <div class="control-group all-90 column-group gutters">
+                      <%= f.label( :text, "Answer Question", :class => "all-20 align-right") %>
+                      <div class="control all-80">
+                        <%= f.text_area( :text, :placeholder => "Ask the Question", :class => 'form-control') %>
+                      </div>
+                    </div>
+
+                    <%= hidden_field_tag :t_id, @tutorial.id %>
+                  </div>
+                  <div class="all-80 push-center half-bottom-padding">
+                    <%= submit_tag( "Submit Answer", class: "ink-button all-100 blue")%>
+                  </div>
+
+              <% end %>
+
+            </div>
+          </div>
+
+          <div class="Title column-group all-100 half-top-padding half-bottom-space" >
+            <div class="column-group all-100">
+              <div class="all-50"><h3>Comments</h3></div>
+            </div>
+          </div>
+
+          <div class="Desc all-90 push-center align-left half-top-padding bottom-padding" >
+            <div class="all-100 half-top-padding half-left-padding half-right-padding"></div>
+            <% @comments.each do |c|%>
+                <% @user = User.find(c.user_id)%>
+                <div class="Comment all-100 half-top-padding ">
+                  <div class="column-group all-100">
+                    <div class="column-group all-70 push-middle">
+
+                      <div class="all-50 push-middle half-top-padding"><h4><%=@user.name %></h4></div>
+                      <div class="column-group all-50 align-right push-middle half-top-padding">
+                        <div class="all-50 half-top-padding"><p><b>Rating: </b></p></div>
+                        <div class="all-50">
+                          <% if c.ratings.size != 0 %>
+                              <%c.ratings.average(:rate).round(2)%>
+                              <%j = c.ratings.average(:rate).round()%>
+                              <div class="Stars">
+                                <ul class="rating" style="float: right">
+                                  <% for i in 0..(j-1) do %>
+                                      <li><%= image_tag("star2.png", class: "SIcon") %></li>
+                                  <% end %>
+                                </ul>
+                              </div>
+                          <% end %>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div class="Stars all-20 half-top-padding half-right-padding">
+
+                      <%= form_for(:rating, url: ratings_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
+                          <%= hidden_field_tag :c_id, c.id %>
+                          <ul class="rating">
+                            <li><label><%= f.radio_button(:rate, 5, :onclick => "this.form.submit();") %> <%= image_tag("star.png", class: "SIcon") %></label></li>
+                            <li><label><%= f.radio_button(:rate, 4, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                            <li><label><%= f.radio_button(:rate, 3, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                            <li><label><%= f.radio_button(:rate, 2, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                            <li><label><%= f.radio_button(:rate, 1, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                          </ul>
+                      <% end %>
+
+                    </div>
+
+                    <dic class="all-10 align-right half-top-padding">
+                      <% if @user == current_user %>
+                          <%=link_to image_tag("ex.png", class: "Icon"), comment_path(c.id), method: :delete%>
+                      <%end%>
+                    </dic>
+                  </div>
+                  <div class="column all-100">
+                    <p><%=c.text%></p>
+                  </div>
+                </div>
+
+            <%end%>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -14,9 +14,21 @@ class RatingsController < ApplicationController
         flash[:failure] = "Error Occured"
         render :back
       end
-    else
+    elsif params[:c_id]
       @comment = Comment.find(params[:c_id])
       @rating = @comment.ratings.build(rating_params)
+      # @rating[:rate] = rating_params[:rate]
+      @rating[:user_id] = current_user.id
+      if @rating.save
+        flash[:danger] = "Rating Added"
+        redirect_to :back
+      else
+        flash[:failure] = "Error Occured"
+        render :back
+      end
+    else
+      @tutorial = Tutorial.find(params[:t_id])
+      @rating = @tutorial.ratings.build(rating_params)
       # @rating[:rate] = rating_params[:rate]
       @rating[:user_id] = current_user.id
       if @rating.save

@@ -1,0 +1,45 @@
+<div class="ink-grid">
+  <div class="QuestionIndex all-100 half-top-padding">
+    <div class="Title column-group all-100 push-left">
+      <div class="all-50"><h1>Tutorials</h1></div>
+      <div class="all-50 align-right push-middle">
+        <%= button_to "Post a Tutorial", new_tutorial_path, :method => :get, class: "ink-button blue all-30" %>
+      </div>
+    </div>
+    <div class="column-group all-100 horizontal-gutters push-center">
+      <% @tutorials.each do |a| %>
+          <div class="QuestionCardHolder all-50 medium-50 small-50 tiny-100 half-bottom-space half-top-padding">
+            <div class="QuestionCard padding half-bottom-space">
+
+              <div class="all-100">
+                <div class="all-100 left-padding right-padding ">
+                  <div class="Title all-100 align-center top-padding push-top" style="min-height: 10em">
+                    <a href="<%= tutorial_path(a) %>"><h3><%= a.title %></h3></a>
+                  </div>
+                  <div class="all-100 align-center top-padding push-bottom">
+                    <p><%= a.user.name%></p>
+                    <% if a.ratings.size != 0 %>
+                        <%j = a.ratings.average(:rate).round()%>
+                        <div class="Stars <%if j == 5%> all-65 <%elsif j == 4 %>  all-60 <%elsif j == 3 %> all-60 <%elsif j == 2 %> all-55 <%else%> all-55 <%end%> align-center">
+                          <ul class="rating ">
+                            <% for i in 0..(j-1) do %>
+                                <li><%= image_tag("star2.png", class: "SIcon") %></li>
+                            <% end %>
+                          </ul>
+                        </div>
+                    <% else %>
+                        <p>0</p>
+                    <% end %>
+                    <br>
+                    <p>Comments: <%= a.comments.size%></p>
+                    <p><%=a.created_at.strftime("%I:%M%p %m/%d/%Y")%></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

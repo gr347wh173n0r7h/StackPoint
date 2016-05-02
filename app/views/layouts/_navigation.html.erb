@@ -14,6 +14,7 @@
           <li><%= link_to("Home", root_path) %></li>
           <% if logged_in? %>
               <li class="heading"><%= link_to("Questions", questions_path) %></li>
+              <li class="heading"><%= link_to("Tutorials", tutorials_path) %></li>
               <li class="heading"><%= link_to("Account", current_user) %></li>
               <li class="heading"><%= link_to("Logout", logout_path, method: "delete") %></li>
           <% else %>
@@ -29,6 +30,7 @@
   <li><%= link_to("Home", root_path) %></li>
   <% if logged_in? %>
       <li class="heading"><%= link_to("Questions", questions_path) %></li>
+      <li class="heading"><%= link_to("Tutorials", tutorials_path) %></li>
       <li class="heading"><%= link_to("Account", current_user) %></li>
       <li class="heading"><%= link_to("Logout", logout_path, method: "delete") %></li>
   <% else %>

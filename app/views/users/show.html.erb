@@ -41,32 +41,74 @@
           </div>
           <div class="ContentBox all-100 padding">
             <% @user.comments.each do |c| %>
-                <div class="ContentEntry column-group all-100 push-middle">
-                  <div class="all-30 half-top-padding"><h5><%=link_to c.question.title, question_path(c.question)%></h5></div>
-                  <div class="all-40 align-center half-top-padding"><p><%=c.text.first(30)%>...</p></div>
-                  <div class="all-10 align-center half-top-padding"><p><b>Comments:</b> <%=c.question.comments.size%></p></div>
-                  <div class="all-10 align-center half-top-padding">
-                    <% if c.question.ratings.size != 0 %>
-                        <p><b>Rating:</b> <%=c.question.ratings.average(:rate).round(2)%></p>
-                    <% else %>
-                        <p><b>Rating:</b> None</p>
-                    <% end %>
-                  </div>
-                  <div class="all-10 align-right ">
-                    <%= link_to image_tag("ex.png", class: "Icon"),
-                                comment_path(c),
-                                method: :delete,
-                                data: {confirm: 'Are you sure'} %>
-                  </div>
-                </div>
+                <% if c.question %>
+                    <div class="ContentEntry column-group all-100 push-middle">
+                      <div class="all-30 half-top-padding"><h5><%=link_to c.question.title, question_path(c.question)%></h5></div>
+                      <div class="all-40 align-center half-top-padding"><p><%=c.text.first(30)%>...</p></div>
+
+                          <div class="all-10 align-center half-top-padding"><p><b>Comments:</b> <%=c.question.comments.size%></p></div>
+                          <div class="all-10 align-center half-top-padding">
+                            <% if c.question.ratings.size != 0 %>
+                                <p><b>Rating:</b> <%=c.question.ratings.average(:rate).round(2)%></p>
+                            <% else %>
+                                <p><b>Rating:</b> None</p>
+                            <% end %>
+                          </div>
+                          <div class="all-10 align-right ">
+                            <%= link_to image_tag("ex.png", class: "Icon"),
+                                        comment_path(c),
+                                        method: :delete,
+                                        data: {confirm: 'Are you sure'} %>
+                          </div>
+                    </div>
+                <% else %>
+                    <div class="ContentEntry column-group all-100 push-middle">
+                      <div class="all-30 half-top-padding"><h5><%=link_to c.tutorial.title, tutorial_path(c.tutorial)%></h5></div>
+                      <div class="all-40 align-center half-top-padding"><p><%=c.text.first(30)%>...</p></div>
+
+                      <div class="all-10 align-center half-top-padding"><p><b>Comments:</b> <%=c.tutorial.comments.size%></p></div>
+                      <div class="all-10 align-center half-top-padding">
+                        <% if c.tutorial.ratings.size != 0 %>
+                            <p><b>Rating:</b> <%=c.tutorial.ratings.average(:rate).round(2)%></p>
+                        <% else %>
+                            <p><b>Rating:</b> None</p>
+                        <% end %>
+                      </div>
+                      <div class="all-10 align-right ">
+                        <%= link_to image_tag("ex.png", class: "Icon"),
+                                    tutorial_path(c),
+                                    method: :delete,
+                                    data: {confirm: 'Are you sure'} %>
+                      </div>
+                    </div>
+                <% end %>
             <% end %>
           </div>
 
           <div class="Title column-group all-100 top-padding half-bottom-space push-middle" >
             <h4>Tutorials Posted:</h4>
           </div>
-          <div class="ContentBox all-100">
-
+          <div class="ContentBox all-100 padding">
+            <% @user.tutorials.each do |c| %>
+                <div class="ContentEntry column-group all-100 push-middle">
+                  <div class="all-30 half-top-padding"><h5><%=link_to c.title, question_path(c)%></h5></div>
+                  <div class="all-40 align-center half-top-padding"><p><%=c.text.first(30)%>...</p></div>
+                  <div class="all-10 align-center half-top-padding"><p><b>Comments:</b> <%=c.comments.size%></p></div>
+                  <div class="all-10 align-center half-top-padding">
+                    <% if c.ratings.size != 0 %>
+                        <p><b>Rating:</b> <%=c.ratings.average(:rate).round(2)%></p>
+                    <% else %>
+                        <p><b>Rating:</b> None</p>
+                    <% end %>
+                  </div>
+                  <div class="all-10 align-right ">
+                    <%= link_to image_tag("ex.png", class: "Icon"),
+                                tutorial_path(c),
+                                method: :delete,
+                                data: {confirm: 'Are you sure'} %>
+                  </div>
+                </div>
+            <% end %>
           </div>
 
         </div>

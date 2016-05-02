@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.destroy
     flash[:danger] = 'Question Deleted'
-    redirect_to :back
+    redirect_to questions_path
   end
 
   private

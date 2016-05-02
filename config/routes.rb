@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root 'static#home'
 
   get 'register'  => 'users#new'
@@ -13,8 +12,13 @@ Rails.application.routes.draw do
   get 'questions/new' => 'questions#new'
   post 'questions/create'
   get 'questions/:id' => 'questions#show'
-  # get 'projects/update' => 'projects#update'
   delete 'questions/id' => 'questions#destroy'
+
+  get 'tutorials' => 'tutorials#index'
+  get 'tutorials/new' => 'tutorials#new'
+  post 'tutorials/create'
+  get 'tutorials/:id' => 'tutorials#show'
+  delete 'tutorials/id' => 'tutorials#destroy'
 
   post 'comments/create'
   delete 'comments/id' => 'comments#destroy'
@@ -23,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :questions
+  resources :tutorials
   resources :comments
   resources :ratings
 

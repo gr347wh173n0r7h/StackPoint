@@ -1,0 +1,39 @@
+<div class="QuestionNew all-100">
+  <div class="ink-grid">
+    <div class="push-center">
+      <div class="column-group all-100 push-center padding">
+
+
+        <div class="New column-group all-100 left-padding right-padding half-top-padding half-bottom-padding bottom-space push-center">
+          <div class="Title all-90 half-top-padding half-bottom-space" >
+            <h3>Ask a Question</h3>
+          </div>
+          <%= form_for(:tutorial, url: tutorials_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
+              <div class="all-80 push-center half-top-space">
+
+                <div class="control-group column-group gutters">
+                  <%= f.label( :title, "Question Title", :class => "all-20 align-right") %>
+                  <div class="control all-80">
+                    <%= f.text_field( :title, :placeholder => "Question", :class => 'form-control') %>
+                  </div>
+                </div>
+
+                <div class="control-group column-group gutters">
+                  <%= f.label( :text, "Project Description", :class => "all-20 align-right") %>
+                  <div class="control all-80">
+                    <%= f.text_area( :text, :placeholder => "Ask Your Question", :class => 'form-control') %>
+                  </div>
+                </div>
+
+
+              </div>
+              <div class="all-80 push-center half-bottom-padding">
+                <%= submit_tag( "Post Tutorial", class: "ink-button all-100 blue")%>
+              </div>
+
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
