@@ -1,3 +1,31 @@
-// Place all the styles related to the Ratings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.rating {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  li {
+    float: right;
+    //text-decoration: none;
+  }
+}
+
+.Stars {
+  label > input {
+    /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from document flow */
+  }
+  label > input + img {
+    /* IMAGE STYLES */
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  label > input:checked + img {
+    /* (RADIO CHECKED) IMAGE STYLES */
+    border: 2px solid #0d68c2;
+  }
+}
+  .SIcon {
+    max-width: 1.5em;
+    max-height: 1.5em;
+  }

@@ -11,8 +11,8 @@
             <div class="column-group all-70">
 
               <div class="Title column-group all-100 push-middle half-top-padding">
-                <div class="all-50"><h3><%=@question.title%></h3></div>
-                <div class="all-30 align-right">
+                <div class="all-50 push-middle half-top-padding"><h3><%=@question.title%></h3></div>
+                <div class="all-30 align-right push-middle half-top-padding">
                   <p>
                     <b>Rating: </b>
                     <% if @question.ratings.size != 0 %>
@@ -22,16 +22,16 @@
                     <% end %>
                   </p>
                 </div>
-                <div class="all-20 half-right-padding">
+                <div class="Stars all-20 half-right-padding">
 
                   <%= form_for(:rating, url: ratings_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
                       <%= hidden_field_tag :q_id, @question.id %>
                       <ul class="rating">
-                        <li><%= f.radio_button(:rate, 5, :onclick => "this.form.submit();") %></li>
-                        <li><%= f.radio_button(:rate, 4, :onclick => "this.form.submit();") %></li>
-                        <li><%= f.radio_button(:rate, 3, :onclick => "this.form.submit();") %></li>
-                        <li><%= f.radio_button(:rate, 2, :onclick => "this.form.submit();") %></li>
-                        <li><%= f.radio_button(:rate, 1, :onclick => "this.form.submit();") %></li>
+                        <li><label><%= f.radio_button(:rate, 5, :onclick => "this.form.submit();") %> <%= image_tag("star.png", class: "SIcon") %></label></li>
+                        <li><label><%= f.radio_button(:rate, 4, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                        <li><label><%= f.radio_button(:rate, 3, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                        <li><label><%= f.radio_button(:rate, 2, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
+                        <li><label><%= f.radio_button(:rate, 1, :onclick => "this.form.submit();") %><%= image_tag("star.png", class: "SIcon") %></label></li>
                       </ul>
                   <% end %>
 

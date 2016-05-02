@@ -13,6 +13,7 @@
   .Title, .QuestionTitle {
     border-bottom: 1px solid rgba(100,100,100,.2);
     h1, h3{color: #0d68c2}
+    h1:hover, h3:hover{text-decoration: none;}
   }
 }
 .QuestionIndex {
@@ -60,14 +61,5 @@
 
 }
 
-.rating {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  li {
-    float: right;
-    //text-decoration: none;
-  }
-}
+
 
