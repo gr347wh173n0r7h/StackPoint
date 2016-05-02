@@ -16,7 +16,7 @@
           <div class="ContentBox all-100 padding">
             <% @user.questions.each do |c| %>
                 <div class="ContentEntry column-group all-100 push-middle">
-                    <div class="all-30 half-top-padding"><h5><%=c.title%></h5></div>
+                    <div class="all-30 half-top-padding"><h5><%=link_to c.title, question_path(c)%></h5></div>
                     <div class="all-40 align-center half-top-padding"><p><%=c.text.first(30)%>...</p></div>
                     <div class="all-10 align-center half-top-padding"><p>Comments: <%=c.comments.size%></p></div>
                   <div class="all-10 align-center half-top-padding">
@@ -42,7 +42,7 @@
           <div class="ContentBox all-100 padding">
             <% @user.comments.each do |c| %>
                 <div class="ContentEntry column-group all-100 push-middle">
-                  <div class="all-30 half-top-padding"><h5><%=c.question.title%></h5></div>
+                  <div class="all-30 half-top-padding"><h5><%=link_to c.question.title, question_path(c.question)%></h5></div>
                   <div class="all-40 align-center half-top-padding"><p><%=c.text.first(30)%>...</p></div>
                   <div class="all-10 align-center half-top-padding"><p>Comments: <%=c.question.comments.size%></p></div>
                   <div class="all-10 align-center half-top-padding">
