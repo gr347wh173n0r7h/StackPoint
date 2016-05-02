@@ -15,8 +15,10 @@
                 <div class="all-30 align-right">
                   <p>
                     <b>Rating: </b>
-                    <% if @question.ratings.size == 0 %>
+                    <% if @question.ratings.size != 0 %>
                         <%=@question.ratings.average(:rate).round(2)%>
+                    <% else %>
+                        0
                     <% end %>
                   </p>
                 </div>
