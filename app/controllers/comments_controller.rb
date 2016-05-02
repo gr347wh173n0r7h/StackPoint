@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
-    if params[:c_id]
+    if params[:q_id]
       @question = Question.find(params[:q_id])
       @comment = @question.comments.build(comment_params)
       @comment[:user_id] = current_user.id
