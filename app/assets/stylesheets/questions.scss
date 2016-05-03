@@ -17,6 +17,16 @@
   }
 }
 .QuestionIndex {
+  a {
+    color: #555555;
+    h3{ color: rgba(13, 104, 194, .5);}
+  }
+  a:hover{
+    text-decoration: none;
+    color: #0d68c2;
+    h3{color: #0d68c2;}
+    p{color: #555555}
+  }
   .QuestionCard{
     background: white;
     //border: solid 1px black;
@@ -31,7 +41,7 @@
 
     h3, h3 a {
       font-weight: 300;
-      color: inherit;
+      color: rgba(13, 104, 194, .5);;
       font-size: 1.5em;
     }
     h3 a:hover{

@@ -9,12 +9,12 @@
     <div class="column-group all-100 horizontal-gutters push-center">
       <% @questions.each do |a| %>
           <div class="QuestionCardHolder all-25 medium-30 small-50 tiny-100 half-bottom-space half-top-padding">
-            <div class="QuestionCard padding half-bottom-space">
+            <a href="<%= question_path(a) %>"><div class="QuestionCard padding half-bottom-space">
 
               <div class="all-100">
                 <div class="all-100 left-padding right-padding ">
                   <div class="Title all-100 align-center top-padding push-top" style="min-height: 10em">
-                    <a href="<%= question_path(a) %>"><h3><%= a.title %></h3></a>
+                    <h3><%= a.title %></h3>
                   </div>
                   <div class="all-100 align-center top-padding push-bottom">
                     <p><%= a.user.name%></p>
@@ -37,7 +37,7 @@
                 </div>
               </div>
 
-            </div>
+            </div></a>
           </div>
       <% end %>
     </div>
