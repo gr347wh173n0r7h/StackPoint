@@ -71,7 +71,7 @@
           </div>
 
           <div class="Desc all-90 push-center align-left half-top-padding bottom-padding" >
-            <div class="all-100 half-top-padding half-left-padding half-right-padding"><p><%=@question.text%></p></div>
+            <div class="all-100 half-top-padding half-bottom-padding half-left-padding half-right-padding" style="background-color: rgba(242, 242, 242, .5); border-radius: 2px;"><p><%=@question.text%></p></div>
           </div>
 
 
@@ -117,7 +117,7 @@
             <div class="all-100 half-top-padding half-left-padding half-right-padding"></div>
                 <% @comments.each do |c|%>
                     <% @user = User.find(c.user_id)%>
-                    <div class="Comment all-100 half-top-padding ">
+                    <div class="Comment all-100 half-top-padding half-bottom-padding ">
                       <div class="column-group all-100">
                             <div class="column-group all-70 push-middle">
 
@@ -162,7 +162,7 @@
                                 <%end%>
                             </dic>
                       </div>
-                      <div class="column all-100">
+                      <div class="column all-100 padding" style="background-color: rgba(242, 242, 242, .5); border-radius: 2px; padding-bottom: 5px;">
                         <p><%=c.text%></p>
                       </div>
                     </div>

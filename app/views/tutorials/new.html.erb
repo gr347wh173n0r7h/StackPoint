@@ -8,7 +8,7 @@
           <div class="Title all-90 half-top-padding half-bottom-space" >
             <h3>Add a Tutorial</h3>
           </div>
-          <%= form_for(:tutorial, url: tutorials_create_path, :html => {:class => "ink-form all-100"}) do |f| %>
+          <%= form_for(:tutorial, url: tutorials_create_path, :html => {:class => "ink-form all-100", :multipart => true}) do |f| %>
               <div class="all-80 push-center half-top-space">
 
                 <div class="control-group column-group gutters">

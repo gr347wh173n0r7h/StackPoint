@@ -12,10 +12,10 @@ class TutorialsController < ApplicationController
     @tutorial = @user.tutorials.build(tutorial_params)
     if @tutorial.save
       flash[:success] = "Tutorial Posted"
-      redirect_to tutorials_path
+      redirect_to tutorial_path(@tutorial)
     else
       flash[:failure] = "Error Occured"
-      render :back
+      redirect_to :back
     end
   end
 
@@ -35,7 +35,7 @@ class TutorialsController < ApplicationController
       redirect_to tutorial_path(@tutorial)
     else
       flash[:failure] = "Error Occured"
-      render 'edit'
+      redirect_to :back
     end
   end
 
@@ -43,7 +43,7 @@ class TutorialsController < ApplicationController
     @tutorial = Tutorial.find(params[:id])
     @tutorial.destroy
     flash[:danger] = 'Tutorial Deleted'
-    redirect_to tutorials_path
+    redirect_to current_user
   end
 
   private

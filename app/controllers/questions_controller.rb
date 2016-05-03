@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
         redirect_to questions_path
       else
         flash[:failure] = "Error Occured"
-        render new_question_path
+        redirect_to :back
       end
   end
 
@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
       redirect_to question_path(@question)
     else
       flash[:failure] = "Error Occured"
-      render 'edit'
+      redirect_to :back
     end
 
   end
@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.destroy
     flash[:danger] = 'Question Deleted'
-    redirect_to questions_path
+    redirect_to current_user
   end
 
   private
